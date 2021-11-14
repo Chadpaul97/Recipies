@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Recipe</title>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Recipe</h1>
+    <form action="/add_recipe" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br><br>
+        <label for="description">Description:</label><br>
+        <textarea name="description"cols="30" rows="10"></textarea><br>
+        <label for="instructions">Instructions</label><br>
+        <textarea name="instructions" cols="30" rows="10"></textarea><br><br>
+        <label for="date">Date Made On:</label><br>
+        <input type="date" name="date"><br>
+        <p>Under 30 Minutes?</p>
+        <label for="time">Yes</label>
+        <input type="radio" id="yes" name="time" value="Yes">
+        <label for="time">No</label>
+        <input type="radio" id="no" name="time" value="No"><br><br>
+        <button type="submit" style="font-size: 18px;">Sumbit</button>
+    </form><br><br><br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <a href="/logout_user" style="font-size: 30px;">Logout</a><br><br>
+    <a href="/get_recipes" style="font-size: 30px;">Dashboard</a>
+</body>
+</html>
